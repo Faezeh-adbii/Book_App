@@ -1,18 +1,31 @@
-import React from 'react'
+import { useState } from "react";
+import { AiFillHeart } from "react-icons/ai";
 
-function BookCard( {data:{title , author , image , language , pages}}) {
+import styles from "./BookCard.module.css";
+
+function BookCard({ data: { title, author, image, language, pages } }) {
+  const [Like, setLike] = useState(false);
+
+  const LikeHandler = () => {
+    setLike((Like) => !Like);
+  };
+
   return (
-    <div>
+    <div className={styles.card}>
       <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{author}</p>
-      <div>
-        <span>{language}</span>
-        <span>{pages} pages</span>
+      <div className={styles.info}>
+        <h3>{title}</h3>
+        <p>{author}</p>
+        <div>
+          <span>{language}</span>
+          <span>{pages} pages</span>
+        </div>
       </div>
-      <button>like</button>
+      <button onClick={LikeHandler}>
+        <AiFillHeart color={Like ? "red" : "#e0e0e0"} fontSize="1.8rem" />
+      </button>
     </div>
-  )
+  );
 }
 
-export default BookCard
+export default BookCard;
