@@ -1,7 +1,8 @@
 import { AiOutlineSearch } from "react-icons/ai";
+import styles from "./Search.module.css"
 function SearchBox({ Search, setSearch , searchHandler }) {
   return (
-    <div>
+    <div className={styles.search}>
       <input
         type="text"
         placeholder="Search tiltle"
